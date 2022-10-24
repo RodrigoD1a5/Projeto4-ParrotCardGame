@@ -65,6 +65,27 @@ function desvirar(x, y) {
 }
 function TerminarJogo() {
     if (document.querySelectorAll(".virada").length === nCartas) {
-        alert(`Você ganhou em ${jogadas} jogadas!`);
+        let respota='';
+        alert(`Você ganhou em ${jogadas} jogadas e em ${contador} segundos!`);
+        respota= prompt('Deseja jogar novamente?(responda com "sim" ou não")');
+        if (respota === "sim"){
+            location.reload();
+        }
+        else{
+            alert("Espero que tenha se divertido!");
+            window.close();
+        }
+    }
+}
+//função para contar o tempo de jogo
+let contador = 0;
+let codInterval;
+codInterval = setInterval(incrementar, 1000);
+function incrementar(){
+    const divContador = document.querySelector(".contador");
+    divContador.innerHTML = contador;
+    contador++;
+    if(document.querySelectorAll(".virada").length ===nCartas ){
+        clearInterval(codInterval);
     }
 }

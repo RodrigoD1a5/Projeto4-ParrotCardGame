@@ -14,7 +14,7 @@ body {
 
 .topo {
     width: 545px;
-    margin-top: 40px;
+    margin-top: 70px;
 
 }
 
@@ -35,27 +35,6 @@ h1 {
 
 }
 
-/* .carta{
-    background-color: #99CEA8;
-    width: 117px;
-    height: 146px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    margin-right: 34px;
-    margin-bottom: 34px;
-    position: relative;
-}
-.front{
-    position: absolute;
-    width: 100%;
-    transition: all 1s;
-}
-.virada{
-    
-    width: 100%;
-} */
 img {
     width: 100px;
 }
@@ -95,6 +74,28 @@ img {
     transform: rotateY(0deg);
 }
 
+.relogio {
+    background-color: #ddf37b;
+    width: 80px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(207, 238, 174, 0.69);
+    position: fixed;
+    top: 20px;
+    right: 0;
+
+}
+
+.contador {
+    color: #75B79E;
+    font-size: 20px;
+    font-weight: 700;
+
+
+}
 
 @media (max-width: 335px) {
     .topo {
