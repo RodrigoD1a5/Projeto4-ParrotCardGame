@@ -10,14 +10,14 @@ let jogadas = 0;
 
 while (nCartas % 2 !== 0 || nCartas < 4 || nCartas > 14) {
     alert("Número de cartas inválido. Tente novamente!");
-    var nCartas = Number(prompt("Com quantas cartas você quer?"));
+    nCartas = Number(prompt("Com quantas cartas você quer?"));
 }
 
 distribuirCartas();
 
 
 function distribuirCartas() {
-    let cartasEscolhidasAleatoriamente = [];
+    const cartasEscolhidasAleatoriamente = [];
     inventarioCartas.sort(comparador);
     for (let i = 0; i < nCartas / 2; i++) {
         cartasEscolhidasAleatoriamente.push(inventarioCartas[i]);
@@ -63,7 +63,7 @@ function desvirar(x, y) {
     x.classList.remove("virada");
     y.classList.remove("virada");
 }
-function TerminarJogo() {
+function terminarJogo() {
     if (document.querySelectorAll(".virada").length === nCartas) {
         let respota='';
         alert(`Você ganhou em ${jogadas} jogadas e em ${contador} segundos!`);
@@ -79,8 +79,7 @@ function TerminarJogo() {
 }
 //função para contar o tempo de jogo
 let contador = 0;
-let codInterval;
-codInterval = setInterval(incrementar, 1000);
+const codInterval = setInterval(incrementar, 1000);
 function incrementar(){
     const divContador = document.querySelector(".contador");
     divContador.innerHTML = contador;
