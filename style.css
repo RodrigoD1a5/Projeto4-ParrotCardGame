@@ -56,9 +56,10 @@ h1 {
     
     width: 100%;
 } */
-img{
-    width: 100%;
+img {
+    width: 100px;
 }
+
 .card {
     width: 117px;
     height: 146px;
@@ -81,15 +82,19 @@ img{
     transition: all .5s;
     transform-style: preserve-3d;
 }
+
 .back-face {
-    transform: rotateY(-180deg);
-}
-.virada {
-    backface-visibility: hidden;
-    transition: all 0.5s;
-    transform-style: preserve-3d;
     transform: rotateY(180deg);
 }
+
+.virada .front-face {
+    transform: rotateY(-180deg);
+}
+
+.virada .back-face {
+    transform: rotateY(0deg);
+}
+
 
 @media (max-width: 335px) {
     .topo {
@@ -115,7 +120,7 @@ img{
         margin-left: 65px;
     }
 
-    .carta {
+    .card {
         margin-right: 0;
     }
 }
