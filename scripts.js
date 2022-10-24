@@ -41,6 +41,7 @@ function comparador() {
 }
 function virarCarta(cartaClicada) {
     if (cartaClicada.classList.contains("virada") === false) {
+        jogadas++;
 
         const carta2 = cartaClicada.children[1].children[0].src;
         cartaClicada.classList.add('virada');
@@ -49,6 +50,7 @@ function virarCarta(cartaClicada) {
         }
         else if (carta2 === listaCartasSelecionadas[0].children[1].children[0].src) {
             listaCartasSelecionadas = [];
+            setTimeout(TerminarJogo, 1000);
             return;
         }
         else {
@@ -60,4 +62,9 @@ function virarCarta(cartaClicada) {
 function desvirar(x, y) {
     x.classList.remove("virada");
     y.classList.remove("virada");
+}
+function TerminarJogo() {
+    if (document.querySelectorAll(".virada").length === nCartas) {
+        alert(`Você ganhou em ${jogadas} jogadas!`);
+    }
 }
