@@ -1,11 +1,12 @@
 var nCartas = Number(prompt("Com quantas cartas você quer jogar?"));
 const blocoCartas = document.querySelector('.bloco-cartas');
-const cartaParrot = document.querySelector('.card');
 const inventarioCartas = [
     "./imagens/bobrossparrot.gif", "./imagens/explodyparrot.gif", "./imagens/fiestaparrot.gif",
     "./imagens/metalparrot.gif", "./imagens/revertitparrot.gif", "./imagens/tripletsparrot.gif",
     "./imagens/unicornparrot.gif"];
 
+let listaCartasSelecionadas = [];
+let jogadas = 0;
 
 while (nCartas % 2 !== 0 || nCartas < 4 || nCartas > 14) {
     alert("Número de cartas inválido. Tente novamente!");
@@ -16,8 +17,8 @@ distribuirCartas();
 
 
 function distribuirCartas() {
+    let cartasEscolhidasAleatoriamente = [];
     inventarioCartas.sort(comparador);
-    cartasEscolhidasAleatoriamente = [];
     for (let i = 0; i < nCartas / 2; i++) {
         cartasEscolhidasAleatoriamente.push(inventarioCartas[i]);
         cartasEscolhidasAleatoriamente.push(inventarioCartas[i]);
@@ -39,5 +40,24 @@ function comparador() {
     return Math.random() - 0.5;
 }
 function virarCarta(cartaClicada) {
-    cartaClicada.classList.add('virada');
+    if (cartaClicada.classList.contains("virada") === false) {
+
+        const carta2 = cartaClicada.children[1].children[0].src;
+        cartaClicada.classList.add('virada');
+        if (listaCartasSelecionadas.length === 0) {
+            listaCartasSelecionadas.push(cartaClicada);
+        }
+        else if (carta2 === listaCartasSelecionadas[0].children[1].children[0].src) {
+            listaCartasSelecionadas = [];
+            return;
+        }
+        else {
+            setTimeout(desvirar, 1000, listaCartasSelecionadas[0], cartaClicada);
+            listaCartasSelecionadas = [];
+        }
+    }
+}
+function desvirar(x, y) {
+    x.classList.remove("virada");
+    y.classList.remove("virada");
 }
